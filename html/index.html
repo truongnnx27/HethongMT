@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Page</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <nav id="menu">
+    <div class="nav-links">
+      <a href="#top">Trang chủ</a>
+      <a href="#listproduct">Danh sách sản phẩm</a>
+      <a href="#listcoso">Cơ sở</a>
+    </div>
+    <div class="nav-right">
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Tìm kiếm sản phẩm...">
+        <button id="search-btn">Tìm kiếm</button>
+        <ul id="suggestions" class="suggestions-list"></ul> 
+      </div>
+      <div class="auth-buttons">
+        <span class="user-info" style="display: none; color: brown;"></span> <!-- Thông tin người dùng -->
+        <button class="login-btn">Đăng nhập</button>
+        <button class="register-btn">Đăng ký</button>
+        <button class="logout-btn" style="display: none;">Đăng xuất</button>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <!-- Form đăng nhập (có thể giữ lại nhưng không cần hiển thị) -->
+  <div id="login-form" style="display: none;">
+    <h3>Đăng nhập</h3>
+    <input type="email" id="login-email" placeholder="Nhập email" required>
+    
+    <input type="password" id="login-password" placeholder="Nhập mật khẩu" required>
+    
+    <button id="submit-login">Đăng nhập</button>
+    <button id="cancel-login">Hủy</button>
+  </div>
+    <section id="listproduct">
+      <h2>Danh sách sản phẩm</h2>
+      <div id="data-product"></div>
+    </section>
+    <section id="listcoso">
+      <h2>Cơ sở</h2>
+      <div id="data-coso"></div>
+    </section>
+  </main>
+  <footer>Họ tên: Nguyễn Ngọc Xuân Trường @2024</footer>
+</body>
+</html>
+
+<script type="module">
+  import { showlistProduct, showlistCoso, searchProduct, showSearchSuggestions } from '../js/app.js';
+
+  // Đảm bảo DOM đã sẵn sàng trước khi thực thi mã
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector("#data-product").innerHTML = showlistProduct();
+    document.querySelector("#data-coso").innerHTML = showlistCoso();
+
+    const searchInput = document.querySelector("#search-input");
+    const suggestionsList = document.querySelector("#suggestions");
+    
+    //danh sách gợi ý khi nhập từ khóa
+    searchInput.addEventListener("input", function () {
+      const keyword = searchInput.value;
+      if (keyword.length > 0) {
+        suggestionsList.innerHTML = showSearchSuggestions(keyword);
+        suggestionsList.style.display = "block";
+
+        //sự kiện click mục gợi ý
+        const suggestionItems = suggestionsList.querySelectorAll("li");
+        suggestionItems.forEach(item =>{
+          item.addEventListener("click", function(){
+            searchInput.value = item.textContent; //gán gợi ý vào input
+            suggestionsList.style.display = "none";
+          })
+        })
+      } else {
+        suggestionsList.innerHTML = "";
+        suggestionsList.style.display = "none";
+      }
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!searchInput.contains(event.target) && !suggestionsList.contains(event.target)) {
+        suggestionsList.style.display = "none"; // Ẩn gợi ý
+      }
+    });
+
+    // Tìm kiếm khi nhấn nút tìm kiếm
+    document.querySelector("#search-btn").addEventListener("click", function () {
+      const keyword = searchInput.value;
+      document.querySelector("#data-product").innerHTML = searchProduct(keyword);
+    });
+  });
+</script>

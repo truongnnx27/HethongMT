@@ -1,0 +1,14 @@
+{
+  "thuong_hieu":[
+    {"id":"1", "ten":"1Zpresso", "thu_tu":1, "an_hien":1}, 
+    {"id":"2", "ten":"Aram Coffee Brasil", "thu_tu":2, "an_hien":1}, 
+    {"id":"3", "ten":"Bialetti", "thu_tu":3, "an_hien":1}, 
+    {"id":"4", "ten":"Cafede Kona", "thu_tu":4, "an_hien":1}, 
+    {"id":"5", "ten":"Delter Coffee", "thu_tu":5, "an_hien":1}, 
+    {"id":"6", "ten":"Timemore", "thu_tu":6, "an_hien":1}, 
+    {"id":"7", "ten":"Flair Espresso", "thu_tu":6, "an_hien":1}, 
+    {"id":"8", "ten":"Hario", "thu_tu":6, "an_hien":1}, 
+    {"id":"9", "ten":"Lelit", "thu_tu":6, "an_hien":1}, 
+    {"id":"10", "ten":"Staresso", "thu_tu":6, "an_hien":1}
+ ]
+}

@@ -1,0 +1,348 @@
+/* styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 20px;
+  }
+  
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin:  0;
+    margin-top: -19px;
+    padding: 10px;
+    background-color: #4CAF50;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: #f1f6f2;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav a:hover {
+    color: #0c0707;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-bar input {
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 1px solid #4CAF50;
+    border-radius: 4px;
+    outline: none;
+}
+
+.search-bar button {
+    padding: 5px 15px;
+    margin-left: 10px;
+    background-color: #4CAF50;
+    color: #fafcfa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #f1f1f1;
+    color: #4CAF50;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.auth-buttons button {
+    padding: 5px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.auth-buttons button:hover {
+    background-color: #f1f1f1;
+    color: #4CAF50;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .search-bar input {
+        width: 100px;
+    }
+}
+
+/*Gợi ý tìm kiếm*/
+.suggestions-list {
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-top: none; 
+    z-index: 10; 
+    max-height: 200px; 
+    overflow-y: auto; 
+    display: none; 
+    width: 215px;
+  }
+  
+  .suggestions-list li {
+    padding: 8px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  
+  .suggestions-list li:hover {
+    background-color: #f0f0f0; /* Màu nền khi hover */
+  }
+  
+  /*đăng nhập */
+  /* Lớp phủ mờ khi hiển thị form đăng nhập */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Màu nền mờ */
+    display: none; /* Ban đầu ẩn */
+    justify-content: center;
+    align-items: center;
+    z-index: 999; 
+  }
+  
+  /* Form đăng nhập */
+  #login-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    width: 350px;
+    max-width: 90%; /* Đảm bảo form vừa với các màn hình nhỏ */
+    text-align: center;
+    position: relative;
+    z-index: 1000;
+  }
+  
+  /* Nút đóng form */
+  #cancel-login {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  #cancel-login:hover {
+    background-color: #d32f2f;
+  }
+  
+  /* Nút đăng nhập */
+  #submit-login {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  #submit-login:hover {
+    background-color: #45a049;
+  }
+  
+  /* Styling chung cho các input */
+  #login-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Hiệu ứng khi form xuất hiện */
+  #login-form.show {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .modal {
+  display: none; /* Ẩn modal theo mặc định */
+  position: fixed; /* Ở vị trí cố định */
+  z-index: 1; /* Ở trên cùng */
+  left: 0;
+  top: 0;
+  width: 100%; /* Toàn bộ chiều rộng */
+  height: 100%; /* Toàn bộ chiều cao */
+  overflow: auto; /* Nếu cần cuộn */
+  background-color: rgba(0,0,0,0.4); /* Nền mờ */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* Đặt giữa */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Chiều rộng của modal */
+}
+
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+  main {
+    margin: 20px 0;
+  }
+  
+  section {
+    margin: 20px 0;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    color: #091509;
+    text-align: center;
+  }
+  
+  #data-product, #data-coso {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  #data-product div {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  #data-product img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  #data-product button{
+    width: 70px;
+    height: 30px;
+    font-size: 15px;
+    margin: 5px 0;
+    margin-right: 100px;
+    background-color: rgb(227, 60, 51);
+    color: #fcfffc;
+  }
+  #data-product button:hover{
+    background-color: #ddd;
+    color: #091509;
+  }
+  
+  #data-coso div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  #data-coso img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  #data-coso p {
+    color: #777;
+    font-size: 14px;
+  }
+  
+  footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #777;
+    font-size: 14px;
+  }
+  
+  @media (max-width: 768px) {
+    nav {
+      font-size: 16px;
+    }
+  
+    h2 {
+      font-size: 20px;
+    }
+  
+    #data-coso div {
+      width: 150px;
+      height: 150px;
+    }
+  
+    #data-coso img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+  
